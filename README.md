@@ -7,4 +7,6 @@ Approccio Statistico: ottenere una curva media da cui definire un range di rifer
   - Raggruppati per istante temporale (ora?)
  - Fittare i punti medi/mediani per ricavarne la curva di riferimento
  - Calcolare range di ammissione per definire inlier/outlier (utlizzando varianza?)
- - Valutazione delle curve reali attraverso appropriato indice (MSE?)
+ - Valutazione delle curve reali attraverso appropriato indice sulla base della distanza della curva media
+  - Per l'intera curva (MSE?)
+  - Puntuale
