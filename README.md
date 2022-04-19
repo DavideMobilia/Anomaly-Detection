@@ -15,5 +15,5 @@ Approccio Statistico: ottenere una curva media da cui definire un range di rifer
 Creazione di uno score sulla base della numerosità delle anomalie riscontrate e la loro tipologia
 Definizione delle anomalie: sono solo alcuni punti della curva o uno scostamento che ne modificare le caratteristiche
 
-## Criticità:
+## Criticità
 Alcune curve hanno più istanti di saldatura, è un anomalia o un processo diverso?
