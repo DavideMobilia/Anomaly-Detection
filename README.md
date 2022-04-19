@@ -7,6 +7,13 @@ Approccio Statistico: ottenere una curva media da cui definire un range di rifer
   - Raggruppati per istante temporale (ora?)
  - Fittare i punti medi/mediani per ricavarne la curva di riferimento
  - Calcolare range di ammissione per definire inlier/outlier (utlizzando varianza?)
- - Valutazione delle curve reali attraverso appropriato indice sulla base della distanza della curva media
+ - Definizione delle anomalie attraverso appropriato indice sulla base della distanza dalla curva media
     - Per l'intera curva (MSE?)
     - Puntuale
+  
+## Considerazioni importanti
+Creazione di uno score sulla base della numerosità delle anomalie riscontrate e la loro tipologia
+Definizione delle anomalie: sono solo alcuni punti della curva o uno scostamento che ne modificare le caratteristiche
+
+## Criticità:
+Alcune curve hanno più istanti di saldatura, è un anomalia o un processo diverso?
