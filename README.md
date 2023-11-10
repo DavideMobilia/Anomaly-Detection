@@ -1,24 +1,39 @@
-# Industry Lab-Project Folder Structure
+# Anomaly Detection Project Summary
 
-The Industry Lab-Project folder is organized as follows:
+## Introduction to the Problem
+The project addresses an unsupervised Anomaly Detection problem, specifically identifying anomalies in a welding process within an FCA (Fiat Chrysler Automobiles) facility. Real-time data from the Weld Quality System (WQS) was collected, generating welding curves stored in a file system.
 
-## Data
-Data is being omitted for non disclosure agreements
+Two approaches were employed: a statistical approach and an unsupervised learning approach.
 
-## Models
-Contains saved machine learning models.
+## Statistical Approach
+### Structural Anomalies
+Structural anomalies refer to abnormal peaks or drops compared to the overall trend of curves. Differential analysis of voltage values was chosen to identify structural anomalies.
 
-## Script
-- **Part0- Data Extraction.ipynb**: Extracts useful data from the original JSON files.
+### Construction of Control Bands
+Two types of intervals were constructed for defining inliers and outliers:
+1. μ ± 3σ (based on normal distribution)
+2. 𝑄0.1 + 1.5𝐼𝑄𝑅, 𝑄3 + 1.5𝐼𝑄𝑅 (based on quantile distribution)
 
-- **Part1- Data Preparation.ipynb**: Filters out irrelevant or anomalous data and extracts a test observation for deployment.
+To ensure a wide safety margin for structural anomaly identification, outliers were defined beyond μ ± 4σ.
 
-- **Part2- Statistical Anomaly Detection.ipynb**: Develops the statistical algorithm.
+### Examples of Identified Anomalies
+- Anomalous Drops: 19% of data
+- Anomalous Peaks: 1% of data
+- Concurrent Anomalies: 0.5% of data
 
-- **Part3.a- Machine Learning_voltage.ipynb**: Processes and develops the machine learning model for voltage.
+### Voltage Anomaly Classification
+Anomaly classification based on percentage of anomalies:
+- Blue: Non-anomalous (anomaly percentage < 10%)
+- Orange: Anomalous (10-40% anomaly percentage)
+- Red: Highly anomalous (>40% anomaly percentage)
 
-- **Part3.b- Machine Learning_current.ipynb**: Processes and develops the machine learning model for current.
+## Machine Learning
+### Data Preparation
+Values before the first change in curve slope were removed to avoid influencing algorithm behavior.
 
-- **Part4- Anomaly Analysis.ipynb**
+### Application of Algorithms
+Two algorithms chosen for Outlier Detection: Isolation Forest and Local Outlier Factor.
 
-- **Part5- Deploy.ipynb**
+- **Isolation Forest**: Identifies outliers based on their shorter paths in random partitioning.
+- **Local Outlier Factor (LOF)**: Assigns a score based on the local density ratio, identifying isolated instances.
+
