@@ -6,7 +6,7 @@ The Industry Lab-Project folder is organized as follows:
 Data is being omitted for non disclosure agreements
 
 ## Models
-- Contains saved machine learning models.
+Contains saved machine learning models.
 
 ## Script
 - **Part0- Data Extraction.ipynb**: Extracts useful data from the original JSON files.
