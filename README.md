@@ -1,19 +1,55 @@
-# Industry-Lab--Project
+# Industry Lab-Project Folder Structure
 
-## Approccio Statistico
-ottenere una curva media da cui definire un range di riferimento attraverso cui definire eventuali anomalie della curva
-- Calcolo dei valori medi/mediani per ogni istante di saldatura:
-  - Per tutti i dati
-  - Raggruppati per spotName
-  - Raggruppati per istante temporale (ora?)
- - Calcolare range di ammissione per definire inlier/outlier (utlizzando varianza?)
- - Definizione delle anomalie sulla base della distanza dalla curva media
-    - Per l'intera curva (MSE?)
-    - Puntuali
-  
-### Considerazioni importanti
-Creazione di uno score sulla base della numerosità delle anomalie riscontrate e la loro tipologia
-Definizione delle anomalie: sono solo alcuni punti della curva o uno scostamento che ne modificare le caratteristiche
+The Industry Lab-Project folder is organized as follows:
 
-### Criticità
-Alcune curve hanno più istanti di saldatura, è un anomalia o un processo diverso?
+## Data
+- **Original**: Contains the original data from FCA.
+- **Processed**: Contains data processed from the original or derived datasets.
+- **Reference**: Data representing average curves and control bands.
+
+## Models
+- Contains saved machine learning models.
+
+## Script
+- **Part0- Data Extraction.ipynb**: Extracts useful data from the original JSON files.
+  - Input: Original data
+  - Output: `full_rows_df.pkl`
+
+- **Part1- Data Preparation.ipynb**: Filters out irrelevant or anomalous data and extracts a test observation for deployment.
+  - Input: `full_rows_df.pkl`
+  - Output: 
+    - `clean_rows_df.pkl`
+    - `test_value.pkl`
+
+- **Part2- Statistical Anomaly Detection.ipynb**: Develops the statistical algorithm.
+  - Input: `clean_rows_df.pkl`
+  - Output: 
+    - `reference_volt_lag_curves.pkl`
+    - `reference_volt_curves.pkl`
+    - `reference_current_curves.pkl`
+    - `with_stat_anomalies.pkl`
+
+- **Part3.a- Machine Learning_voltage.ipynb**: Processes and develops the machine learning model for voltage.
+  - Input: `clean_rows_df.pkl`
+  - Output: 
+    - `ML_voltage_with_anomalies.pkl`
+    - `iForest_volt.pkl`
+
+- **Part3.b- Machine Learning_current.ipynb**: Processes and develops the machine learning model for current.
+  - Input: `clean_rows_df.pkl`
+  - Output: 
+    - `ML_current_with_anomalies.pkl`
+    - `iForest_curr.pkl`
+
+- **Part4- Anomaly Analysis.ipynb**:
+  - Input: 
+    - `reference_volt_curves.pkl`
+    - `reference_current_curves.pkl`
+    - `with_stat_anomalies.pkl`
+    - `ML_voltage_with_anomalies.pkl`
+    - `ML_current_with_anomalies.pkl`
+
+- **Part5- Deploy.ipynb**:
+  - Input: 
+    - `iForest_volt.pkl`
+    - `iForest_curr.pkl`
